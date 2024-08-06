@@ -19,4 +19,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>PrintDanServlet</display-name>
+    <servlet-name>PrintDanServlet</servlet-name>
+    <servlet-class>com.KoreaIT.java.jsp_AM.PrintDanServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PrintDanServlet</servlet-name>
+    <url-pattern>/PrintDanServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
