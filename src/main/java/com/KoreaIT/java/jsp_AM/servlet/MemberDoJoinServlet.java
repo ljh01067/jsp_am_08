@@ -1,25 +1,27 @@
 package com.KoreaIT.java.jsp_AM.servlet;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
 
 import com.KoreaIT.java.jsp_AM.util.DBUtil;
 import com.KoreaIT.java.jsp_AM.util.SecSql;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/article/list")
-public class ArticleListServlet extends HttpServlet {
-	
+@WebServlet("/member/doJoin")
+public class MemberDoJoinServlet extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+
 		// DB 연결
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -28,40 +30,43 @@ public class ArticleListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-
 		String url = "jdbc:mysql://127.0.0.1:3306/24_08_JAM?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul";
 
 		String user = "root";
 		String password = "";
+
 		Connection conn = null;
+
 		try {
 			conn = DriverManager.getConnection(url, user, password);
-			int page = 1;
 
-			if (request.getParameter("page") != null && request.getParameter("page").length() != 0) {
-				page = Integer.parseInt(request.getParameter("page"));
-			}
-
-			int itemsInAPage = 10;
-			int limitFrom = (page - 1) * itemsInAPage;
+			String loginId = request.getParameter("loginId");
+			String loginPw = request.getParameter("loginPw");
+			String name = request.getParameter("name");
 
 			SecSql sql = SecSql.from("SELECT COUNT(*) AS cnt");
-			sql.append("FROM article");
+			sql.append("FROM `member`");
+			sql.append("WHERE loginId = ?;", loginId);
 
-			int totalCnt = DBUtil.selectRowIntValue(conn, sql);
-			int totalPage = (int) Math.ceil(totalCnt / (double) itemsInAPage);
+			boolean isJoinableLoginId = DBUtil.selectRowIntValue(conn, sql) == 0;
 
-			sql = SecSql.from("SELECT *");
-			sql.append("FROM article");
-			sql.append("ORDER BY id DESC");
-			sql.append("LIMIT ?, ?;", limitFrom, itemsInAPage);
-			List<Map<String, Object>> articleRows = DBUtil.selectRows(conn, sql);
-			
-			request.setAttribute("page", page);
-			request.setAttribute("totalPage", totalPage);
-			request.setAttribute("totalCnt", totalCnt);
-			request.setAttribute("articleRows", articleRows);
-			request.getRequestDispatcher("/jsp/article/list.jsp").forward(request, response);
+			if (isJoinableLoginId == false) {
+				response.getWriter().append(String
+						.format("<script>alert('%s는 이미 사용중'); location.replace('../member/join');</script>", loginId));
+				return;
+			}
+
+			sql = SecSql.from("INSERT INTO `member`");
+			sql.append("SET regDate = NOW(),");
+			sql.append("loginId = ?,", loginId);
+			sql.append("loginPw = ?,", loginPw);
+			sql.append("`name` = ?;", name);
+
+			int id = DBUtil.insert(conn, sql);
+
+			response.getWriter().append(
+					String.format("<script>alert('%d번 회원이 가입 됨'); location.replace('../article/list');</script>", id));
+
 		} catch (SQLException e) {
 			System.out.println("에러 1 : " + e);
 		} finally {
@@ -73,7 +78,9 @@ public class ArticleListServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+
 	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

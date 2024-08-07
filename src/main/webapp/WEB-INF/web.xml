@@ -79,4 +79,24 @@
     <servlet-name>ArticleDoLoginServlet</servlet-name>
     <url-pattern>/ArticleDoLoginServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MemberDoJoinServlet</display-name>
+    <servlet-name>MemberDoJoinServlet</servlet-name>
+    <servlet-class>com.KoreaIT.java.jsp_AM.servlet.MemberDoJoinServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberDoJoinServlet</servlet-name>
+    <url-pattern>/MemberDoJoinServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MemberJoinServlet</display-name>
+    <servlet-name>MemberJoinServlet</servlet-name>
+    <servlet-class>com.KoreaIT.java.jsp_AM.servlet.MemberJoinServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberJoinServlet</servlet-name>
+    <url-pattern>/MemberJoinServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
