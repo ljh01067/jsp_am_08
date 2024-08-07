@@ -14,10 +14,7 @@ import java.util.Map;
 
 import com.KoreaIT.java.jsp_AM.exception.SQLErrorException;
 
-import com.KoreaIT.java.jsp_AM.exception.SQLErrorException;
-
 public class DBUtil {
-	
 
 	public static Map<String, Object> selectRow(Connection dbConn, SecSql sql) {
 		List<Map<String, Object>> rows = selectRows(dbConn, sql);
