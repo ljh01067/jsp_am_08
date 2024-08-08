@@ -51,52 +51,52 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ArticleDoModifyServlet</display-name>
-    <servlet-name>ArticleDoModifyServlet</servlet-name>
-    <servlet-class>com.KoreaIT.java.jsp_AM.servlet.ArticleDoModifyServlet</servlet-class>
+    <display-name>DispatcherServlet</display-name>
+    <servlet-name>DispatcherServlet</servlet-name>
+    <servlet-class>com.KoreaIT.java.jsp_AM.servlet.DispatcherServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ArticleDoModifyServlet</servlet-name>
-    <url-pattern>/ArticleDoModifyServlet</url-pattern>
+    <servlet-name>DispatcherServlet</servlet-name>
+    <url-pattern>/DispatcherServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ArticleModifyServlet</display-name>
-    <servlet-name>ArticleModifyServlet</servlet-name>
-    <servlet-class>com.KoreaIT.java.jsp_AM.servlet.ArticleModifyServlet</servlet-class>
+    <display-name>v</display-name>
+    <servlet-name>v</servlet-name>
+    <servlet-class>com.KoreaIT.java.jsp_AM.contoller.v</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ArticleModifyServlet</servlet-name>
-    <url-pattern>/ArticleModifyServlet</url-pattern>
+    <servlet-name>v</servlet-name>
+    <url-pattern>/v</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ArticleDoLoginServlet</display-name>
-    <servlet-name>ArticleDoLoginServlet</servlet-name>
-    <servlet-class>com.KoreaIT.java.jsp_AM.servlet.ArticleDoLoginServlet</servlet-class>
+    <display-name>ArticleService</display-name>
+    <servlet-name>ArticleService</servlet-name>
+    <servlet-class>com.KoreaIT.java.jsp_AM.contoller.ArticleService</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ArticleDoLoginServlet</servlet-name>
-    <url-pattern>/ArticleDoLoginServlet</url-pattern>
+    <servlet-name>ArticleService</servlet-name>
+    <url-pattern>/ArticleService</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>MemberDoJoinServlet</display-name>
-    <servlet-name>MemberDoJoinServlet</servlet-name>
-    <servlet-class>com.KoreaIT.java.jsp_AM.servlet.MemberDoJoinServlet</servlet-class>
+    <display-name>ArticleDao</display-name>
+    <servlet-name>ArticleDao</servlet-name>
+    <servlet-class>com.KoreaIT.java.jsp_AM.contoller.ArticleDao</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>MemberDoJoinServlet</servlet-name>
-    <url-pattern>/MemberDoJoinServlet</url-pattern>
+    <servlet-name>ArticleDao</servlet-name>
+    <url-pattern>/ArticleDao</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>MemberJoinServlet</display-name>
-    <servlet-name>MemberJoinServlet</servlet-name>
-    <servlet-class>com.KoreaIT.java.jsp_AM.servlet.MemberJoinServlet</servlet-class>
+    <display-name>Article</display-name>
+    <servlet-name>Article</servlet-name>
+    <servlet-class>com.KoreaIT.java.jsp_AM.contoller.Article</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>MemberJoinServlet</servlet-name>
-    <url-pattern>/MemberJoinServlet</url-pattern>
+    <servlet-name>Article</servlet-name>
+    <url-pattern>/Article</url-pattern>
   </servlet-mapping>
 </web-app>
